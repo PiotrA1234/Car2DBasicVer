@@ -7,7 +7,7 @@ public class GameControllerScript : MonoBehaviour
     
     private float a = -1.2f;
     private float b = 1.2f;
-    private float timer = 10f;
+    private float timer;
     public GameObject star, barrel;
     public GameObject Player;
     public GameObject RestartButton;
@@ -15,7 +15,7 @@ public class GameControllerScript : MonoBehaviour
     
     void Start()
     {
-        
+        timer = 10f;
     }
 
     // Update is called once per frame
@@ -84,6 +84,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
     public void Restart() {
+        CarScript.nitroTimer = 0f;
         SceneManager.LoadScene("SampleScene");
     }
 }
