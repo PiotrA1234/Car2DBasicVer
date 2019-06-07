@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameControllerScript : MonoBehaviour
 {
-    public GameObject star, barrel;
+    
     private float a = -1.2f;
     private float b = 1.2f;
     private float timer = 10f;
+    public GameObject star, barrel;
     public GameObject Player;
+    public GameObject RestartButton;
     public static GameObject PlayerTag;
-
+    
     void Start()
     {
         
@@ -19,6 +21,7 @@ public class GameControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Player == null){ RestartButton.SetActive(true); }
         timer -= Time.deltaTime;
 
         if (timer <= 0)
@@ -79,5 +82,8 @@ public class GameControllerScript : MonoBehaviour
             Destroy(PlayerTag);
             Destroy(barrel.gameObject);
         }
+    }
+    public void Restart() {
+        SceneManager.LoadScene("SampleScene");
     }
 }
